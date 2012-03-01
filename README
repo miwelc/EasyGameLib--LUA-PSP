@@ -1,0 +1,82 @@
+Easy Game Lib (EGLib) v 0.2
+
+Copyright (C) 
+
+    Pause function --> BlackSith, 2006
+    ExitGame Menu function --> BlackSith, 2006
+    ScaleImage function --> soulphalanx, 2006
+    RotateImage & PrintRotated function --> shine, 2005
+    PrintCentered function --> nathan42100, 2006
+    hFlip & vFlip functions --> BlackSith, 2006
+    Fus function --> BlackSith, 2006
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+
+Step by step:
+------------
+
+1. Put the file "EGLib.lua" in your app folder
+2. Insert at the first line of your code:   dofile("EGLib.lua")
+3. HOW TO:
+
+a) Pause function:
+	Insert in your code:   pause(soundl, timer1, timer2)  when you want to pause the game.
+	- Only if you want --> where soundl you can insert a sound name, previously declared. If you don't want just leave it: pause()
+	- Only if you want --> where timer1 or timer2 you can insert the name of a timer which you want to be paused
+	EX.	if Controls.read():start() then pause(beep) end  -- beep is a sound
+		if Controls.read():start() then pause(nil, clock) end  -- This won't play a sound, but this will pause the clock timer while the game is paused
+
+b) ExitGame Menu function:
+	Insert in your code:   exit(soundl)  when you want to show the exit menu. At the next line you must insert   if exityes == 1 then break end
+	- Only if you want --> where soundl you can insert a sound name, previously declared. If you don't want just leave it: exit()
+	- Only if you want --> where timer1 or timer2 you can insert the name of a timer which you want to be paused
+	Ex.	if Controls.read():l() then exit(beep, clock) end  -- beep is a sound. This will pause the timer called "clock"
+		if exityes == 1 then break end
+
+c) ScaleImage function:
+	Insert in your code:   scaleImage(newX, newY, theImage)
+	- newx -> Width, newy -> height, theImage -> image   (lol)
+	Ex.	screen:blit(10, 10, scaleImage(25, 25, car))
+
+d) RotateImage function:
+	Insert in your code:   rotate(image, rotateIndex)
+	- image -> image   (lol), rotateIndex -> 0 (0º), 1 (90º right), 2 (180º right), 3 (270º right), 4 (360º right (Of course, an estupid value lol))
+	This will rotate the image 90º to the right
+	Ex.	screen:blit(5, 5, rotate(car, 2))
+
+e) PrintRotated function:
+	Insert in your code:   printRotated(xro, yro, text, color, rotateIndex)
+	- xro & yro -> Position, text -> text, color -> color, rotateIndex -> 0, 1, 2, 3 (like the rotateimage function)
+	This will print rotated text
+	Ex.	printRotated(472, 76, "Hello World", red, 1)
+
+f) PrintCentered function:
+	Insert in your code:   printCentered(y, text, color)
+	- y -> vertical position, text -> text, color -> color
+	Ex.	printCentered(134, "Hello World", red)
+
+g) hFlip & vFlip functions:
+	Insert in your code:   hFlip(image)
+				or
+			       vFlip(image)
+	- image -> An image
+	This will invert an image vertically (vFlip) or horizantilly (hFlip)
+	Ex.	carinv = hFlip(car)
+
+h) Fus function:
+	Insert in your code:   fus(image1, image2)
+	This will fuse two images. (It's a bit limited)
+
+
+
+NOTES:
+-----
+
+1. NOW, both pause & exitgame menu functions will pause up to 2 timers.
+
+2. This is a recopilation of functions, the original autors are in the head of the readme.
